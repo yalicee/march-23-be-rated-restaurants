@@ -15,15 +15,15 @@ When we are looking for in depth knowledge on JavaScript we avoid W3 Schools lik
 
 1. Build up SQL schemas to create the tables for your database.
 2. Learn more about queries written in SQL.
-3. Make post requests and validate you data before it fails your schema.
+3. Make post requests and validate your data before it fails your schema.
 4. Solidify your knowledge of building and writing tests for APIs.
 5. Learn how to manage SQL migrations as we cannot just DROP the database when we need to alter it!
 
 ### Steps
-1. Database schemas to create the tables we will need
+1. We will need database schemas to create the tables
 2. A SEED file to put some development data into your database
 3. Router for the API
-4. Controllers for each route.
+4. Controllers for each route
 5. Write a Query for each data set you will require. We would usually export this from a `lib` directory in a `queries.js` file
 6. Connect to your database with the pg-promise library
 7. Return or insert/update the data required for each route as described below.
@@ -217,8 +217,8 @@ POST /api/restaurants/12/ratings
 
 ### Extra credit tasks
 
-1. Extend your restaurants controller to serve a average rating and a comments count.
-2. Add a query to sort your restaurants response by rating, most recently rated, most commented or most recently commented.
+1. Extend your restaurants controller to serve an average rating and a comments count.
+2. Add a query to sort your restaurants by rating, most recently rated, most commented or most recently commented.
 3. Write a route and controller for getting the average ratings across an area.
 
 ```
