@@ -102,18 +102,18 @@ returns a json object of areas keyed by their id
 GET /api/areas
 {
     1: {
-        id: 1,
+        area_id: 1,
         name: 'Altringham'
     },
     2: {
-        id: 2,
+        area_id: 2,
         name: 'Northern Quarter'
     }
 }
 ```
 
 2 - Get restaurants for a area
-returns a json object of restaurants keyed by their area id
+returns a json object with the area, containing a json object of restaurants keyed by their restaurant_id
 ```
 GET /api/areas/:area_id/restaurants
 {
@@ -121,14 +121,14 @@ GET /api/areas/:area_id/restaurants
     name: 'Picadilly',
     restaurants: {
         12: {
-            id: 12,
+            restaurant_id: 12,
             area_id: 3,
             name: 'Carluccio’s',
             cuisine: 'Italian',
             website: 'http://www.carluccios.com/'
         },
         21: {
-            id: 21,
+            restaurant_id: 21,
             area_id: 3,
             name: 'Yo! Sushi',
             cuisine: 'Sushi',
@@ -144,24 +144,24 @@ POST /api/areas/:area_id/restaurants
 ```
 
 4 - Get comments for a restaurant
-returns a json object of comments keyed by their id
+returns a json object of the restaurant, containing a json object of comments keyed by their id
 ```
 GET /api/restaurants/12/comments
 {
-    id: 12,
+    restaurant_id: 12,
     area_id: 3,
     name: 'Carluccio’s',
     cuisine: 'Italian',
     website: 'http://www.carluccios.com/'
     comments: {
         312: {
-            id: 312,
+            comment_id: 312,
             restaurant_id: 12,
             body: 'My partner found this place on twitter so we decided to go have a look...',
             created_at: 961027220321
         },
         422: {
-            id: 312,
+            comment_id: 422,
             restaurant_id: 12,
             body: 'The place is quirky and affordable - I paid less than 5 pounds for a...',
             created_at: 964224128725
@@ -171,24 +171,24 @@ GET /api/restaurants/12/comments
 ```
 
 5 - Get ratings for a restaurant
-returns a json object of ratings keyed by their id
+returns a json object of the restaurant, containing a json object of ratings keyed by their id
 ```
 GET /api/restaurants/12/ratings
 {
-    id: 12,
+    restaurant_id: 12,
     area_id: 3,
     name: 'Carluccio’s',
     cuisine: 'Italian',
     website: 'http://www.carluccios.com/'
     ratings: {
         32: {
-            id: 32,
+            rating_id: 32,
             restaurant_id: 12,
             rating: 7,
             created_at: 961977633210
         },
         47: {
-            id: 47,
+            rating_id: 47,
             restaurant_id: 12,
             rating: 6,
             created_at: 963964815076
@@ -211,9 +211,11 @@ POST /api/restaurants/12/ratings
 
 ### Testing Steps
 
-1. Set you ENV variables to connect to a separate test database as we did in the Northcoder's News API sprint
-2. Write a seed.test.js file for your testing. Keep the data in that database as minimal as possible
-3. Write tests for each of your API endpoints
+1. Write tests for each of your API endpoints
+2. Write tests for non-existing routes, you should respond with an appropriate error code and message.
+3. Write tests for bad user inputs on valid routes: 
+     GET requests for id's that do not exist should return a 404.
+     POST requests with invalid data should return a 400.
 
 ### Extra credit tasks
 
