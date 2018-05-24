@@ -25,10 +25,9 @@ When we are looking for in depth knowledge on JavaScript we avoid W3 Schools lik
 2.  A SEED file to put some development data into your database
 3.  Router for the API
 4.  Controllers for each route
-5.  Write a Query for each data set you will require. We would usually export this from a `lib` directory in a `queries.js` file
+5.  We wil need a spec folder and a spec file in order to test all our end-points.
 6.  Connect to your database with the pg-promise library
 7.  Return or insert/update the data required for each route as described below.
-8.  On day 2 - Retroactively add tests to your routes and then continue with a TDD approach.
 
 ### Postgresql commands
 
@@ -221,8 +220,6 @@ POST /api/restaurants/12/comments
 ```
 POST /api/restaurants/12/ratings
 ```
-
-### Day 2 Tasks
 
 ### Testing Steps
 
