@@ -109,14 +109,16 @@ returns a json object of areas keyed by their id
 ```
 GET /api/areas
 {
+  areas :   {
     1: {
         area_id: 1,
         name: 'Altrincham'
-    },
+        },
     2: {
         area_id: 2,
         name: 'Northern Quarter'
-    }
+        }
+    }    
 }
 ```
 
@@ -176,7 +178,7 @@ GET /api/restaurants/12/comments
             restaurant_id: 12,
             body: 'The place is quirky and affordable - I paid less than 5 pounds for a...',
             created_at: 964224128725
-        },
+        }
     }
 }
 ```
@@ -204,7 +206,7 @@ GET /api/restaurants/12/ratings
             restaurant_id: 12,
             rating: 6,
             created_at: 963964815076
-        },
+        }
     }
 }
 ```
