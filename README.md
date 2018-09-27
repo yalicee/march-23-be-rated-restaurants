@@ -70,9 +70,9 @@ Areas `have many` Restaurants
 ##### Restaurants Schema
 
 ```
-   restaurant_id   |    name     |                  area_id                   |    cuisine     |  website  |
--------------------+-------------+--------------------------------------------+----------------+-----------+
-SERIAL PRIMARY KEY |   VARCHAR   | FOREIGN KEY (area_id) REFERENCES Areas(id) |    VARCHAR     |  VARCHAR  |
+   restaurant_id   |    name     |         area_id          |    cuisine     |  website  |
+-------------------+-------------+--------------------------+----------------+-----------+
+SERIAL PRIMARY KEY |   VARCHAR   | INT REFERENCES Areas(id) |    VARCHAR     |  VARCHAR  |
 ```
 
 Restaurants `have many` Comments
@@ -80,9 +80,9 @@ Restaurants `have many` Comments
 ##### Comments Schema
 
 ```
-    comment_id     |                     restaurant_id                      |      body     |            created_at               |
--------------------+--------------------------------------------------------+---------------+-------------------------------------+
-SERIAL PRIMARY KEY | FOREIGN KEY (restaurant_id) REFERENCES Restaurants(id) |    VARCHAR    |  TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP |
+    comment_id     |          restaurant_id         |      body     |                   created_at                   |
+-------------------+--------------------------------+---------------+------------------------------------------------+
+SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) |    VARCHAR    |  TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP |
 ```
 
 Restaurants also `have many` Ratings
@@ -92,9 +92,9 @@ Restaurants also `have many` Ratings
 The rating must be an integer with a minimum value of one and a maximum value of five. Research how to make this a constraint in your schema
 
 ```
-     rating_id     |                     restaurant_id                      |    rating     |            created_at               |
--------------------+--------------------------------------------------------+---------------+-------------------------------------+
-SERIAL PRIMARY KEY | FOREIGN KEY (restaurant_id) REFERENCES Restaurants(id) |    INTEGER    | TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP |
+     rating_id     |         restaurant_id          |    rating     |                 created_at                   |
+-------------------+--------------------------------+---------------+----------------------------------------------+
+SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) |    INTEGER    | TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP |
 ```
 
 Ratings and Comments both belong to restaurants but have no relationship with each other. A Comment or Rating also does not need to know which Area the Restaurant it `belongs to` is in.
