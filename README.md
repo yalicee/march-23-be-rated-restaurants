@@ -104,61 +104,90 @@ Ratings and Comments both belong to restaurants but have no relationship with ea
 #### Our API will need the following routes:
 
 1 - Get areas
-returns a json object of areas keyed by their id
+returns a json object of areas and a total count of areas
 
-```
+```js
 GET /api/areas
 {
-  areas :   {
-    1: {
-        area_id: 1,
-        name: 'Altrincham'
-        },
-    2: {
-        area_id: 2,
-        name: 'Northern Quarter'
-        }
-    }    
+  total_areas: 2,
+  areas :   [
+    {
+      area_id: 1,
+      name: 'Altrincham'
+    },
+    {
+      area_id: 2,
+      name: 'Northern Quarter'
+    }
+  ]
 }
 ```
 
 2 - Get restaurants for a area
-returns a json object with the area, containing a json object of restaurants keyed by their restaurant_id
+returns a json object with the area details, containing a count and an array of the restaurants for the area
 
-```
+```js
 GET /api/areas/:area_id/restaurants
 {
     area_id: 3,
     name: 'Picadilly',
-    restaurants: {
-        12: {
-            restaurant_id: 12,
-            area_id: 3,
-            name: 'Carluccio’s',
-            cuisine: 'Italian',
-            website: 'http://www.carluccios.com/'
-        },
-        21: {
-            restaurant_id: 21,
-            area_id: 3,
-            name: 'Yo! Sushi',
-            cuisine: 'Sushi',
-            website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
-        },
-    }
+    total_restaurants: 2,
+    restaurants: [
+      {
+        restaurant_id: 12,
+        area_id: 3,
+        name: 'Carluccio’s',
+        cuisine: 'Italian',
+        website: 'http://www.carluccios.com/'
+      },
+      {
+        restaurant_id: 21,
+        area_id: 3,
+        name: 'Yo! Sushi',
+        cuisine: 'Sushi',
+        website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
+      },
+    ]
+}
+```
+
+2a - Add a query to filter restaurants in a specific area by cuisine
+```js
+GET /api/areas/:area_id/restaurants?cuisine=sushi
+{
+    area_id: 3,
+    name: 'Picadilly',
+    total_restaurants: 1,
+    restaurants: [
+      {
+        restaurant_id: 21,
+        area_id: 3,
+        name: 'Yo! Sushi',
+        cuisine: 'Sushi',
+        website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
+      },
+    ]
 }
 ```
 
 3 - Add a restaurant to an area
-
-```
+returns a json object containing a json object of the new restaurant
+```js
 POST /api/areas/:area_id/restaurants
+{
+  restaurant: {
+    restaurant_id: 99,
+    area_id: 4,
+    name: 'Delhi 2 Go',
+    cuisine: 'Indian',
+    website: 'https://www.dheli-2-g-.com'
+  }
+}
 ```
 
 4 - Get comments for a restaurant
-returns a json object of the restaurant, containing a json object of comments keyed by their id
-
-```
+returns a json object of the restaurant, containing a total count and an array of comments for the restaurant
+```js
 GET /api/restaurants/12/comments
 {
     restaurant_id: 12,
@@ -166,27 +195,28 @@ GET /api/restaurants/12/comments
     name: 'Carluccio’s',
     cuisine: 'Italian',
     website: 'http://www.carluccios.com/'
-    comments: {
-        312: {
-            comment_id: 312,
-            restaurant_id: 12,
-            body: 'My partner found this place on twitter so we decided to go have a look...',
-            created_at: 961027220321
+    total_comments: 2,
+    comments: [
+        {
+          comment_id: 312,
+          restaurant_id: 12,
+          body: 'My partner found this place on twitter so we decided to go have a look...',
+          created_at: 961027220321
         },
-        422: {
-            comment_id: 422,
-            restaurant_id: 12,
-            body: 'The place is quirky and affordable - I paid less than 5 pounds for a...',
-            created_at: 964224128725
+        {
+          comment_id: 422,
+          restaurant_id: 12,
+          body: 'The place is quirky and affordable - I paid less than 5 pounds for a...',
+          created_at: 964224128725
         }
-    }
+    ]
 }
 ```
 
 5 - Get ratings for a restaurant
-returns a json object of the restaurant, containing a json object of ratings keyed by their id
+returns a json object of the restaurant, containing a total count and an array of ratings for the restaurant
 
-```
+```js
 GET /api/restaurants/12/ratings
 {
     restaurant_id: 12,
@@ -194,31 +224,32 @@ GET /api/restaurants/12/ratings
     name: 'Carluccio’s',
     cuisine: 'Italian',
     website: 'http://www.carluccios.com/'
-    ratings: {
-        32: {
-            rating_id: 32,
-            restaurant_id: 12,
-            rating: 7,
-            created_at: 961977633210
+    total_ratings: 2,
+    ratings: [
+        {
+          rating_id: 32,
+          restaurant_id: 12,
+          rating: 7,
+          created_at: 961977633210
         },
-        47: {
-            rating_id: 47,
-            restaurant_id: 12,
-            rating: 6,
-            created_at: 963964815076
+        {
+          rating_id: 47,
+          restaurant_id: 12,
+          rating: 6,
+          created_at: 963964815076
         }
-    }
+    ]
 }
 ```
 
 6 - Add a comment to a restaurant
-
+returns a json object containing a json object of the new comment
 ```
 POST /api/restaurants/12/comments
 ```
 
 7 - Add a rating to a restaurant
-
+returns a json object containing a json object of the new rating
 ```
 POST /api/restaurants/12/ratings
 ```
@@ -233,16 +264,16 @@ POST /api/restaurants/12/ratings
 
 ### Extra credit tasks
 
-1.  Extend your restaurants controller to serve an average rating and a comments count.
-2.  Add a query to sort your restaurants by rating, most recently rated, most commented or most recently commented.
+1.  Add a `sort_by` query to sort your restaurants by rating, most recently rated, most commented or most recently commented.
+2.  Extend your restaurants controller to serve an average rating and a comments count.
 3.  Write a route and controller for getting the average ratings across an area.
 
 ```
 GET /api/areas/:area_id/average-rating
 ```
 
-4.  Extend your areas route and controller to list the areas by the highest to lowest average rating.
+4.  Extend your areas route and controller to use a `sort_by` query to list the areas by the highest to lowest average rating.
 
 ```
-GET /api/areas?sort-by=average-rating
+GET /api/areas?sort_by=average_rating
 ```
