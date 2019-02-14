@@ -151,6 +151,25 @@ GET /api/areas/:area_id/restaurants
 }
 ```
 
+2a - Add a query to filter restaurants in a specific area by cuisine
+```js
+GET /api/areas/:area_id/restaurants?cuisine=sushi
+{
+    area_id: 3,
+    name: 'Picadilly',
+    total_restaurants: 1,
+    restaurants: [
+      {
+        restaurant_id: 21,
+        area_id: 3,
+        name: 'Yo! Sushi',
+        cuisine: 'Sushi',
+        website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
+      },
+    ]
+}
+```
+
 3 - Add a restaurant to an area
 returns a json object containing a json object of the new restaurant
 ```js
@@ -206,7 +225,7 @@ GET /api/restaurants/12/ratings
     cuisine: 'Italian',
     website: 'http://www.carluccios.com/'
     total_ratings: 2,
-    ratings: {
+    ratings: [
         {
           rating_id: 32,
           restaurant_id: 12,
@@ -219,7 +238,7 @@ GET /api/restaurants/12/ratings
           rating: 6,
           created_at: 963964815076
         }
-    }
+    ]
 }
 ```
 
