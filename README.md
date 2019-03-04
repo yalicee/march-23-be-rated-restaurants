@@ -277,3 +277,5 @@ GET /api/areas/:area_id/average-rating
 ```
 GET /api/areas?sort_by=average_rating
 ```
+
+5. Create some **views** for your app using [EJS](https://www.ejs.co/)
