@@ -5,11 +5,11 @@
 ### Background
 
 We are going to build an API which shows ratings, comments and cuisine for restaurants in the Greater Manchester area.
-For this Sprint we will be using [PostgreSQL](https://www.postgresql.org/) and [pg-promise](https://www.npmjs.com/package/pg-promise).
+For this Sprint we will be using [PostgreSQL](https://www.postgresql.org/) and [node-postgres](https://node-postgres.com/).
 
 ### W3 Schools
 
-When we are looking for in depth knowledge on JavaScript we avoid W3 Schools like the plague! W3 Schools is in-fact a very good resource for referencing and learning SQL. [Here is the link](http://www.w3schools.com/sql/default.asp)
+When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3 Schools is a very good resource for referencing and learning SQL. [Here is the link](http://www.w3schools.com/sql/default.asp)
 
 ### Goals
 
@@ -26,7 +26,7 @@ When we are looking for in depth knowledge on JavaScript we avoid W3 Schools lik
 3.  Router for the API
 4.  Controllers for each route
 5.  We wil need a spec folder and a spec file in order to test all our end-points.
-6.  Connect to your database with the pg-promise library
+6.  Connect to your database with the node-postgres library
 7.  Return or insert/update the data required for each route as described below.
 
 ### Postgresql commands
@@ -185,7 +185,13 @@ POST /api/areas/:area_id/restaurants
 }
 ```
 
-4 - Get comments for a restaurant
+4 - Add a comment to a restaurant
+returns a json object containing a json object of the new comment
+```
+POST /api/restaurants/12/comments
+```
+
+5 - Get comments for a restaurant
 returns a json object of the restaurant, containing a total count and an array of comments for the restaurant
 ```js
 GET /api/restaurants/12/comments
@@ -213,7 +219,13 @@ GET /api/restaurants/12/comments
 }
 ```
 
-5 - Get ratings for a restaurant
+6 - Add a rating to a restaurant
+returns a json object containing a json object of the new rating
+```
+POST /api/restaurants/12/ratings
+```
+
+7 - Get ratings for a restaurant
 returns a json object of the restaurant, containing a total count and an array of ratings for the restaurant
 
 ```js
@@ -242,18 +254,6 @@ GET /api/restaurants/12/ratings
 }
 ```
 
-6 - Add a comment to a restaurant
-returns a json object containing a json object of the new comment
-```
-POST /api/restaurants/12/comments
-```
-
-7 - Add a rating to a restaurant
-returns a json object containing a json object of the new rating
-```
-POST /api/restaurants/12/ratings
-```
-
 ### Testing Steps
 
 1.  Write tests for each of your API endpoints
@@ -277,5 +277,7 @@ GET /api/areas/:area_id/average-rating
 ```
 GET /api/areas?sort_by=average_rating
 ```
+
+5. Ensure that any bad routes, quereis, POST bodies or bad IDs are handled by some [https://expressjs.com/en/guide/error-handling.html](https://expressjs.com/en/guide/error-handling.html).
 
 5. Create some **views** for your app using [EJS](https://www.ejs.co/)
