@@ -136,7 +136,7 @@ POST /api/areas
 ```
 
 
-3 - Get restaurants for a area
+3 - Get restaurants for an area
 returns a json object with the area details, containing a count and an array of the restaurants for the area
 
 ```js
