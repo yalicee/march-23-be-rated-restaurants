@@ -123,7 +123,20 @@ GET /api/areas
 }
 ```
 
-2 - Get restaurants for a area
+2 - Post an area
+returns a json object containing an object of the new area
+```js
+POST /api/areas
+{
+     area: {
+       area_id: 12,
+       name: 'your-posted-area-name'
+     }
+}
+```
+
+
+3 - Get restaurants for a area
 returns a json object with the area details, containing a count and an array of the restaurants for the area
 
 ```js
@@ -151,7 +164,7 @@ GET /api/areas/:area_id/restaurants
 }
 ```
 
-2a - Add a query to filter restaurants in a specific area by cuisine
+3a - Add a query to filter restaurants in a specific area by cuisine
 ```js
 GET /api/areas/:area_id/restaurants?cuisine=sushi
 {
@@ -170,8 +183,8 @@ GET /api/areas/:area_id/restaurants?cuisine=sushi
 }
 ```
 
-3 - Add a restaurant to an area
-returns a json object containing a json object of the new restaurant
+3b - Add a restaurant to an area
+returns a json object containing an object of the new restaurant
 ```js
 POST /api/areas/:area_id/restaurants
 {
