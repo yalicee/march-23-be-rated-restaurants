@@ -17,7 +17,6 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 2.  Learn more about queries written in SQL.
 3.  Make post requests and validate your data before it fails your schema.
 4.  Solidify your knowledge of building and writing tests for APIs.
-5.  Learn how to manage SQL migrations as we cannot just DROP the database when we need to alter it!
 
 ### Steps
 
@@ -25,7 +24,7 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 2.  A SEED file to put some development data into your database
 3.  Router for the API
 4.  Controllers for each route
-5.  We wil need a spec folder and a spec file in order to test all our end-points.
+5.  We will need a spec folder and a spec file in order to test all our end-points.
 6.  Connect to your database with the node-postgres library
 7.  Return or insert/update the data required for each route as described below.
 
@@ -125,6 +124,7 @@ GET /api/areas
 
 2 - Post an area
 returns a json object containing an object of the new area
+
 ```js
 POST /api/areas
 {
@@ -134,7 +134,6 @@ POST /api/areas
      }
 }
 ```
-
 
 3 - Get restaurants for an area
 returns a json object with the area details, containing a count and an array of the restaurants for the area
@@ -165,6 +164,7 @@ GET /api/areas/:area_id/restaurants
 ```
 
 3a - Add a query to filter restaurants in a specific area by cuisine
+
 ```js
 GET /api/areas/:area_id/restaurants?cuisine=sushi
 {
@@ -185,6 +185,7 @@ GET /api/areas/:area_id/restaurants?cuisine=sushi
 
 3b - Add a restaurant to an area
 returns a json object containing an object of the new restaurant
+
 ```js
 POST /api/areas/:area_id/restaurants
 {
@@ -200,12 +201,14 @@ POST /api/areas/:area_id/restaurants
 
 4 - Add a comment to a restaurant
 returns a json object containing a json object of the new comment
+
 ```
 POST /api/restaurants/12/comments
 ```
 
 5 - Get comments for a restaurant
 returns a json object of the restaurant, containing a total count and an array of comments for the restaurant
+
 ```js
 GET /api/restaurants/12/comments
 {
@@ -234,6 +237,7 @@ GET /api/restaurants/12/comments
 
 6 - Add a rating to a restaurant
 returns a json object containing a json object of the new rating
+
 ```
 POST /api/restaurants/12/ratings
 ```
@@ -293,4 +297,4 @@ GET /api/areas?sort_by=average_rating
 
 5. Ensure that any bad routes, quereis, POST bodies or bad IDs are handled by some [https://expressjs.com/en/guide/error-handling.html](https://expressjs.com/en/guide/error-handling.html).
 
-5. Create some **views** for your app using [EJS](https://www.ejs.co/)
+6. Create some **views** for your app using [EJS](https://www.ejs.co/)
