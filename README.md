@@ -24,7 +24,7 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 2.  A SEED file to put some development data into your database
 3.  Router for the API
 4.  Controllers for each route
-5.  We will need a spec folder and a spec file in order to test all our end-points.
+5.  We will need a test folder and a test file in order to test all our end-points.
 6.  Connect to your database with the node-postgres library
 7.  Return or insert/update the data required for each route as described below.
 
@@ -128,10 +128,10 @@ returns a json object containing an object of the new area
 ```js
 POST /api/areas
 {
-     area: {
-       area_id: 12,
-       name: 'your-posted-area-name'
-     }
+  area: {
+    area_id: 12,
+    name: 'your-posted-area-name'
+  }
 }
 ```
 
@@ -200,10 +200,18 @@ POST /api/areas/:area_id/restaurants
 ```
 
 4 - Add a comment to a restaurant
-returns a json object containing a json object of the new comment
+returns a json object containing an object of the new comment
 
-```
+```js
 POST /api/restaurants/12/comments
+{
+  comment: {
+    comment_id: 57,
+    restaurant_id: 12,
+    body: 'What a place! Delicious food and even better service!',
+    created_at: 961977633210
+  }
+}
 ```
 
 5 - Get comments for a restaurant
@@ -236,10 +244,18 @@ GET /api/restaurants/12/comments
 ```
 
 6 - Add a rating to a restaurant
-returns a json object containing a json object of the new rating
+returns a json object containing an object of the new rating
 
-```
+```js
 POST /api/restaurants/12/ratings
+{
+  rating: {
+    rating_id: 55,
+    restaurant_id: 12,
+    rating: 4,
+    created_at: 961977633210
+  }
+}
 ```
 
 7 - Get ratings for a restaurant
@@ -258,13 +274,13 @@ GET /api/restaurants/12/ratings
         {
           rating_id: 32,
           restaurant_id: 12,
-          rating: 7,
+          rating: 5,
           created_at: 961977633210
         },
         {
           rating_id: 47,
           restaurant_id: 12,
-          rating: 6,
+          rating: 2,
           created_at: 963964815076
         }
     ]
@@ -296,5 +312,3 @@ GET /api/areas?sort_by=average_rating
 ```
 
 5. Ensure that any bad routes, quereis, POST bodies or bad IDs are handled by some [https://expressjs.com/en/guide/error-handling.html](https://expressjs.com/en/guide/error-handling.html).
-
-6. Create some **views** for your app using [EJS](https://www.ejs.co/)
