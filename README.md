@@ -11,157 +11,169 @@ For this Sprint we will be using [PostgreSQL](https://www.postgresql.org/) and [
 
 When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3 Schools is a very good resource for referencing and learning SQL. [Here is the link](http://www.w3schools.com/sql/default.asp)
 
-### Goals
+## Seeding Challenges
 
-1.  Build up SQL schemas to create the tables for your database.
-2.  Learn more about queries written in SQL.
-3.  Make post requests and validate your data before it fails your schema.
-4.  Solidify your knowledge of building and writing tests for APIs.
+### 1. Create a restaurants database
 
-### Steps
+### 2. Create tables
 
-1.  We will need database schemas to create the tables
-2.  A SEED file to put some development data into your database
-3.  Router for the API
-4.  Controllers for each route
-5.  We will need a test folder and a test file in order to test all our end-points.
-6.  Connect to your database with the node-postgres library
-7.  Return or insert/update the data required for each route as described below.
+#### Areas Table
 
-### Postgresql commands
-
-USE database_name;
-
-```
-\c database_name
-```
-
-SHOW TABLES;
-
-```
-\dt
-```
-
-SHOW DATABASES;
-
-```
-\l
-```
-
-EXIT CONSOLE;
-
-```
-\q
-```
-
-### Schema breakdown
-
-##### Areas Schema
-
-```
-     area_id       |    name     |
--------------------+-------------+
-SERIAL PRIMARY KEY |   VARCHAR   |
-```
+| area_id            | name    |
+| ------------------ | ------- |
+| SERIAL PRIMARY KEY | VARCHAR |
 
 Areas `have many` Restaurants
 
-##### Restaurants Schema
+#### Restaurants Table
 
-```
-   restaurant_id   |    name     |         area_id          |    cuisine     |  website  |
--------------------+-------------+--------------------------+----------------+-----------+
-SERIAL PRIMARY KEY |   VARCHAR   | INT REFERENCES Areas(id) |    VARCHAR     |  VARCHAR  |
-```
+| restaurant_id      | name    | area_id                  | cuisine | website |
+| ------------------ | ------- | ------------------------ | ------- | ------- |
+| SERIAL PRIMARY KEY | VARCHAR | INT REFERENCES Areas(id) | VARCHAR | VARCHAR |
 
 Restaurants `have many` Comments
 
-##### Comments Schema
+#### Comments Table
 
-```
-    comment_id     |          restaurant_id         |      body     |                   created_at                   |
--------------------+--------------------------------+---------------+------------------------------------------------+
-SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) |    VARCHAR    |  TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP |
-```
+| comment_id         | restaurant_id                  | body    | created_at                                   |
+| ------------------ | ------------------------------ | ------- | -------------------------------------------- |
+| SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) | VARCHAR | TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP |
 
 Restaurants also `have many` Ratings
 
-##### Ratings Schema
+#### Ratings Table
 
-The rating must be an integer with a minimum value of one and a maximum value of five. Research how to make this a constraint in your schema
+The rating must be an integer with a minimum value of one and a maximum value of five. Research how to make this a constraint in your Table
 
-```
-     rating_id     |         restaurant_id          |    rating     |                 created_at                   |
--------------------+--------------------------------+---------------+----------------------------------------------+
-SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) |    INTEGER    | TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP |
-```
+| rating_id          | restaurant_id                  | rating  | created_at                                   |
+| ------------------ | ------------------------------ | ------- | -------------------------------------------- |
+| SERIAL PRIMARY KEY | INT REFERENCES Restaurants(id) | INTEGER | TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP |
 
 Ratings and Comments both belong to restaurants but have no relationship with each other. A Comment or Rating also does not need to know which Area the Restaurant it `belongs to` is in.
 
-### API Breakdown
+### 3. Insert information into tables
 
-#### Our API will need the following routes:
+Insert data into your tables. Either use the [example-data.md](./example-data.md) or create your own.
 
-1 - Get areas
-returns a json object of areas and a total count of areas
+## API challenges
 
-```js
-GET /api/areas
+Now that we have our database containing our data, we can start to build our server to interact with our data.
+
+For each of the following endpoints, first write a test using `supertest` and then implement the endpoint.
+
+**After your lecture on Day 2, make sure to go back to previous endpoints and add any error handling you can think of - testing first and then implementing.**
+
+### 1. GET /api/restaurants
+
+This endpoint should respond with a json object containing a key of `restaurants` with a value of an array of all the restaurant objects.
+
+E.g.
+
+```json
 {
-  total_areas: 2,
-  areas :   [
-    {
-      area_id: 1,
-      name: 'Altrincham'
-    },
-    {
-      area_id: 2,
-      name: 'Northern Quarter'
-    }
+  "restaurants": [
+    // ... restaurant objects
   ]
 }
 ```
 
-2 - Post an area
-returns a json object containing an object of the new area
+### 2. GET /api/restaurants?search=<searchTerm>
 
-```js
-POST /api/areas
+Update the above endpoint to allow a `search` query which will filter the results for any restaurant names that match, or partially match, the search term.
+
+**Hint:** - Implement this filtering in your SQL query rather than JavaScript.
+
+E.g.
+
+```json
+// GET /api/restaurants?search=pi
 {
-  area: {
-    area_id: 12,
-    name: 'your-posted-area-name'
+  "restaurants": [
+    // Rudys Pizza restaurant object,
+    // Pieminister restaurant object
+  ]
+}
+```
+
+### 3. POST /api/restaurants
+
+This endpoint should add a restaurant to the database and respond with newly created restaurant
+
+```json
+// POST /api/restaurants - example request body:
+
+{
+  "restaurant_name": "The Codfather",
+  "area_id": 2,
+  "cuisine": "British",
+  "website": "www.thecodfather.com"
+};
+```
+
+```json
+// Example response:
+{
+  "restaurant": {
+    "restaurant_id": 9,
+    "restaurant_name": "The Codfather",
+    "area_id": 2,
+    "cuisine": "British",
+    "website": "www.thecodfather.com"
   }
 }
 ```
 
-3 - Get restaurants for an area
-returns a json object with the area details, containing a count and an array of the restaurants for the area
+### 4. DELETE /api/restaurants/:restaurant_id
 
-```js
-GET /api/areas/:area_id/restaurants
+This endpoint should delete the specified restaurant from the database and respond with a 204 No Content status.
+
+### 5. PATCH /api/restaurants/:restaurant_id
+
+This endpoint should be able to update the specified restaurant. It should accept a body containing any number of the following keys: `restaurant_name`, `area_id`, `cuisine` and `website`, and ignore any other keys. It should respond with the updated restaurant object.
+
+```json
+// PATCH /api/restaurants/3 - example request body:
+
 {
-    area_id: 3,
-    name: 'Picadilly',
-    total_restaurants: 2,
-    restaurants: [
-      {
-        restaurant_id: 12,
-        area_id: 3,
-        name: 'Carluccio’s',
-        cuisine: 'Italian',
-        website: 'http://www.carluccios.com/'
-      },
-      {
-        restaurant_id: 21,
-        area_id: 3,
-        name: 'Yo! Sushi',
-        cuisine: 'Sushi',
-        website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
-      },
-    ]
+  "area_id": 2,
+  "website": "http://rudyspizza-NQ.co.uk/"
+};
+```
+
+```json
+// Example response:
+{
+  "restaurant": {
+    "restaurant_id": 3,
+    "restaurant_name": "Rudys Pizza",
+    "area_id": 2,
+    "cuisine": "Neapolitan Pizzeria",
+    "website": "http://rudyspizza-NQ.co.uk/"
+  }
 }
 ```
+
+### 6. GET /api/areas/:area_id/restaurants
+
+This endpoint should respond with a json object with the area details, containing a count of the restaurants in that area and an array of those restaurants.
+
+```json
+// GET /api/areas/1/restaurants
+{
+  "area_id": 1,
+  "name": "Northern Quarter",
+  "total_restaurants": 4,
+  "restaurants": [
+    //  ... area 1 restaurants
+  ]
+}
+```
+
+### 7. GET /api/restaurants
+
+Update the existing endpoint so that each restaurant object has an `average_rating` property.
+
+### More Challenges
 
 3a - Add a query to filter restaurants in a specific area by cuisine
 
