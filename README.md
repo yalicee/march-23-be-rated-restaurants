@@ -173,43 +173,22 @@ This endpoint should respond with a json object with the area details, containin
 
 Update the existing endpoint so that each restaurant object has an `average_rating` property.
 
-### More Challenges
+## Even More Challenges
 
-3a - Add a query to filter restaurants in a specific area by cuisine
+### 8. GET /api/restaurants?sort_by=<sortByCriteria>
 
-```js
-GET /api/areas/:area_id/restaurants?cuisine=sushi
+This endpoint should be able to take a sort_by query that will sort the restaurants by the specified criteria, including rating. If no sort_by is specified, the sort should default to sorted alphabetically by name, descending.
+
+```json
+// GET /api/restaurants?sort_by=rating
 {
-    area_id: 3,
-    name: 'Picadilly',
-    total_restaurants: 1,
-    restaurants: [
-      {
-        restaurant_id: 21,
-        area_id: 3,
-        name: 'Yo! Sushi',
-        cuisine: 'Sushi',
-        website: 'https://yosushi.com/restaurants/Manchester-Piccadilly-station'
-      },
-    ]
+  "restaurant": [
+    // restaurant objects sorted by rating, descending order
+  ]
 }
 ```
 
-3b - Add a restaurant to an area
-returns a json object containing an object of the new restaurant
-
-```js
-POST /api/areas/:area_id/restaurants
-{
-  restaurant: {
-    restaurant_id: 99,
-    area_id: 4,
-    name: 'Delhi 2 Go',
-    cuisine: 'Indian',
-    website: 'https://www.dheli-2-g-.com'
-  }
-}
-```
+## More
 
 4 - Add a comment to a restaurant
 returns a json object containing an object of the new comment
