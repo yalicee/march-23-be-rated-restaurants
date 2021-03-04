@@ -63,7 +63,17 @@ For each of the following endpoints, first write a test using `supertest` and th
 
 **After your lecture on Day 2, make sure to go back to previous endpoints and add any error handling you can think of - testing first and then implementing.**
 
-### 1. GET /api/restaurants
+### 1. GET /api
+
+This endpoint should respond with a json object containing a 'message' key
+
+```json
+{
+  "message": "all ok"
+}
+```
+
+### 2. GET /api/restaurants
 
 This endpoint should respond with a json object containing a key of `restaurants` with a value of an array of all the restaurant objects.
 
@@ -77,7 +87,7 @@ E.g.
 }
 ```
 
-### 2. GET /api/restaurants?search=<searchTerm>
+### 3. GET /api/restaurants?search=<searchTerm>
 
 Update the above endpoint to allow a `search` query which will filter the results for any restaurant names that match, or partially match, the search term.
 
@@ -95,7 +105,7 @@ E.g.
 }
 ```
 
-### 3. POST /api/restaurants
+### 4. POST /api/restaurants
 
 This endpoint should add a restaurant to the database and respond with newly created restaurant
 
@@ -123,11 +133,11 @@ This endpoint should add a restaurant to the database and respond with newly cre
 }
 ```
 
-### 4. DELETE /api/restaurants/:restaurant_id
+### 5. DELETE /api/restaurants/:restaurant_id
 
 This endpoint should delete the specified restaurant from the database and respond with a 204 No Content status.
 
-### 5. PATCH /api/restaurants/:restaurant_id
+### 6. PATCH /api/restaurants/:restaurant_id
 
 This endpoint should be able to update the specified restaurant. It should accept a body containing any number of the following keys: `restaurant_name`, `area_id`, `cuisine` and `website`, and ignore any other keys. It should respond with the updated restaurant object.
 
@@ -153,7 +163,7 @@ This endpoint should be able to update the specified restaurant. It should accep
 }
 ```
 
-### 6. GET /api/areas/:area_id/restaurants
+### 7. GET /api/areas/:area_id/restaurants
 
 This endpoint should respond with a json object with the area details, containing a count of the restaurants in that area and an array of those restaurants.
 
@@ -169,13 +179,13 @@ This endpoint should respond with a json object with the area details, containin
 }
 ```
 
-### 7. GET /api/restaurants
+### 8. GET /api/restaurants
 
 Update the existing endpoint so that each restaurant object has an `average_rating` property.
 
 ## Even More Challenges
 
-### 8. GET /api/restaurants?sort_by=<sortByCriteria>
+### 9. GET /api/restaurants?sort_by=<sortByCriteria>
 
 This endpoint should be able to take a sort_by query that will sort the restaurants by the specified criteria, including rating. If no sort_by is specified, the sort should default to sorted alphabetically by name, descending.
 
