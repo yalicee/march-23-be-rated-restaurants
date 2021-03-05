@@ -4,7 +4,7 @@
 
 ### Background
 
-We are going to build an API which shows ratings and cuisine for restaurants in the Greater Manchester area.
+We are going to build an API which shows ratings and cuisine for restaurants in the North.
 For this Sprint we will be using [PostgreSQL](https://www.postgresql.org/) and [node-postgres](https://node-postgres.com/).
 
 ### W3 Schools
