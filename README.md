@@ -13,7 +13,7 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 
 ## Seeding Challenges
 
-There is a file in the `db` folder for each of the seeding challenges below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-dbs`
+There is a file in the `db` folder for each of the seeding challenges below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-db`
 
 ### 1. Create a restaurants database
 
@@ -61,7 +61,7 @@ For each of the following endpoints, first write a test using `supertest` and th
 
 This endpoint should respond with a json object containing a 'message' key
 
-```json
+```js
 {
   "message": "all ok"
 }
@@ -73,7 +73,7 @@ This endpoint should respond with a json object containing a key of `restaurants
 
 E.g.
 
-```json
+```js
 {
   "restaurants": [
     // ... restaurant objects
@@ -89,7 +89,7 @@ Update the above endpoint to allow a `search` query which will filter the result
 
 E.g.
 
-```json
+```js
 // GET /api/restaurants?search=pi
 {
   "restaurants": [
@@ -103,7 +103,7 @@ E.g.
 
 This endpoint should add a restaurant to the database and respond with newly created restaurant
 
-```json
+```js
 // POST /api/restaurants - example request body:
 
 {
@@ -114,7 +114,7 @@ This endpoint should add a restaurant to the database and respond with newly cre
 };
 ```
 
-```json
+```js
 // Example response:
 {
   "restaurant": {
@@ -131,13 +131,13 @@ This endpoint should add a restaurant to the database and respond with newly cre
 
 This endpoint should delete the specified restaurant from the database and respond with a 204 No Content status.
 
-**Hint:** You will likely come across an error that needs you to alter a table - make a new `.sql` file to write your SQL command that tweaks your existing tables.
+**Hint:** You will likely come across an error that needs you to update the ratings table - add an ON DELETE action to the creation of the ratings table in [02-create-tables.sql](./db/02-create-tables.sql).
 
 ### 6. PATCH /api/restaurants/:restaurant_id
 
 This endpoint should be able to update the `area_id` field of the specified restaurant. It should respond with the updated restaurant object. Extra/invalid keys in the request object should be ignored, but an empty object in the request should get a 400 response.
 
-```json
+```js
 // PATCH /api/restaurants/3 - example request body:
 
 {
@@ -145,7 +145,7 @@ This endpoint should be able to update the `area_id` field of the specified rest
 };
 ```
 
-```json
+```js
 // Example response:
 {
   "restaurant": {
@@ -162,7 +162,7 @@ This endpoint should be able to update the `area_id` field of the specified rest
 
 This endpoint should respond with a json object with the area details, containing a count of the restaurants in that area and an array of those restaurants.
 
-```json
+```js
 // GET /api/areas/1/restaurants
 {
   "area": {
@@ -186,7 +186,7 @@ Update the existing endpoint so that each restaurant object has an `average_rati
 
 Update this endpoint so that multiple valid keys could be provided and all of those fields get updated.
 
-```json
+```js
 // PATCH /api/restaurants/5 - example request body:
 {
  "website": "http://updatedWebsite.co.uk/",
@@ -194,7 +194,7 @@ Update this endpoint so that multiple valid keys could be provided and all of th
 };
 ```
 
-```json
+```js
 // Example response:
 {
   "restaurant": {
@@ -211,10 +211,10 @@ Update this endpoint so that multiple valid keys could be provided and all of th
 
 This endpoint should be able to take a sort_by query that will sort the restaurants by the specified criteria, including rating. If no sort_by is specified, the sort should default to sorted alphabetically by name, descending.
 
-```json
+```js
 // GET /api/restaurants?sort_by=rating
 {
-  "restaurant": [
+  "restaurants": [
     // restaurant objects sorted by rating, descending order
   ]
 }
