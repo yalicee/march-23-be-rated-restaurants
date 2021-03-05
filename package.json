@@ -1,0 +1,20 @@
+{
+  "name": "be-rated-restaurants",
+  "version": "1.0.0",
+  "description": "## A micro [yelp](https://www.yelp.co.uk/c/manchester/restaurants) clone API using Express and SQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup-dbs": "psql -f ./db/01-create-database.sql && psql -f ./db/02-create-tables.sql && psql -f ./db/03-insert-data.sql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northcoders/be-rated-restaurants.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northcoders/be-rated-restaurants/issues"
+  },
+  "homepage": "https://github.com/northcoders/be-rated-restaurants#readme"
+}

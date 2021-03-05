@@ -13,6 +13,8 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 
 ## Seeding Challenges
 
+There is a file in the `db` folder for each of the seeding challenges below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-dbs`
+
 ### 1. Create a restaurants database
 
 ### 2. Create tables
