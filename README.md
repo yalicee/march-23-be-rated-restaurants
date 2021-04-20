@@ -11,9 +11,9 @@ For this Sprint we will be using [PostgreSQL](https://www.postgresql.org/) and [
 
 When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3 Schools is a very good resource for referencing and learning SQL. [Here is the link](http://www.w3schools.com/sql/default.asp)
 
-## Seeding Challenges
+## Seeding
 
-There is a file in the `db` folder for each of the seeding challenges below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-db`
+There is a file in the `db` folder for each of the seeding steps below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-db`
 
 ### 1. Create a restaurants database
 
@@ -47,7 +47,7 @@ A rating does not need to know which Area the Restaurant it `belongs to` is in.
 
 ### 3. Insert information into tables
 
-Insert data into your tables. Either use the [example-data.md](./example-data.md) or create your own.
+Insert data into your tables.
 
 ## API challenges
 
