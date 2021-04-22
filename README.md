@@ -81,25 +81,7 @@ E.g.
 }
 ```
 
-### 3. GET /api/restaurants?search=<searchTerm>
-
-Update the above endpoint to allow a `search` query which will filter the results for any restaurant names that match, or partially match, the search term.
-
-**Hint:** - Implement this filtering in your SQL query rather than JavaScript.
-
-E.g.
-
-```js
-// GET /api/restaurants?search=pi
-{
-  "restaurants": [
-    // Rudys Pizza restaurant object,
-    // Pieminister restaurant object
-  ]
-}
-```
-
-### 4. POST /api/restaurants
+### 3. POST /api/restaurants
 
 This endpoint should add a restaurant to the database and respond with newly created restaurant
 
@@ -127,13 +109,13 @@ This endpoint should add a restaurant to the database and respond with newly cre
 }
 ```
 
-### 5. DELETE /api/restaurants/:restaurant_id
+### 4. DELETE /api/restaurants/:restaurant_id
 
 This endpoint should delete the specified restaurant from the database and respond with a 204 No Content status.
 
 **Hint:** You will likely come across an error that needs you to update the ratings table - add an ON DELETE action to the creation of the ratings table in [02-create-tables.sql](./db/02-create-tables.sql).
 
-### 6. PATCH /api/restaurants/:restaurant_id
+### 5. PATCH /api/restaurants/:restaurant_id
 
 This endpoint should be able to update the `area_id` field of the specified restaurant. It should respond with the updated restaurant object. Extra/invalid keys in the request object should be ignored, but an empty object in the request should get a 400 response.
 
@@ -158,7 +140,7 @@ This endpoint should be able to update the `area_id` field of the specified rest
 }
 ```
 
-### 7. GET /api/areas/:area_id/restaurants
+### 6. GET /api/areas/:area_id/restaurants
 
 This endpoint should respond with a json object with the area details, containing a count of the restaurants in that area and an array of those restaurants.
 
@@ -176,11 +158,29 @@ This endpoint should respond with a json object with the area details, containin
 }
 ```
 
-### 8. GET /api/restaurants
+### 7. GET /api/restaurants
 
 Update the existing endpoint so that each restaurant object has an `average_rating` property.
 
 ## Even More Challenges
+
+### 8. GET /api/restaurants?search=<searchTerm>
+
+Update the above endpoint to allow a `search` query which will filter the results for any restaurant names that match, or partially match, the search term.
+
+**Hint:** - Implement this filtering in your SQL query rather than JavaScript.
+
+E.g.
+
+```js
+// GET /api/restaurants?search=pi
+{
+  "restaurants": [
+    // Rudys Pizza restaurant object,
+    // Pieminister restaurant object
+  ]
+}
+```
 
 ### 9. PATCH /api/restaurants/:restaurant_id
 
