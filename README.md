@@ -13,11 +13,11 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 
 ## Seeding
 
-There is a file in the `db` folder for each of the seeding steps below. You can run each separately if you'd like, or to run all three in order, we have provided the following script in your package.json: `npm run setup-db`
+There is a file in the `db` folder for seeding both a dev and a test database. You can run these directly with `psql` and for the dev database we have provided the following script in your package.json: `npm run seed-dev`
 
-### 1. Create a restaurants database
+### Tables
 
-### 2. Create tables
+Both of the databases share the following table setup:
 
 #### Areas Table
 
@@ -45,9 +45,6 @@ The rating must be an integer with a minimum value of one and a maximum value of
 
 A rating does not need to know which Area the Restaurant it `belongs to` is in.
 
-### 3. Insert information into tables
-
-Insert data into your tables.
 
 ## API challenges
 
