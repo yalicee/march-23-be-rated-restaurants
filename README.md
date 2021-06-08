@@ -37,7 +37,7 @@ Restaurants `have many` Ratings (see below)
 
 #### Ratings Table
 
-The rating must be an integer with a minimum value of one and a maximum value of five. Research how to make this a constraint in your Table
+The rating must be an integer with a minimum value of one and a maximum value of five.
 
 | rating_id          | restaurant_id                  | rating  | created_at                                   |
 | ------------------ | ------------------------------ | ------- | -------------------------------------------- |
