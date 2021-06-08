@@ -23,8 +23,6 @@ CREATE TABLE ratings (
     rating INT CHECK (rating >= 1 AND rating <= 5)
 );
 
-\c rated_restaurants;
-
 INSERT INTO areas
     (area_name)
 VALUES
