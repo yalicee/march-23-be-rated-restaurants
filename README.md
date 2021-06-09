@@ -63,7 +63,9 @@ For each of the following endpoints, first write a test using `supertest` and th
 
 ### 1. GET /api
 
-This endpoint should respond with a json object containing a 'message' key
+This endpoint should respond with a json object containing a 'message' key.
+
+_Note: you do **not** need a model function for this endpoint, as we are not interacting with the database!_
 
 ```js
 {
