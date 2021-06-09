@@ -119,7 +119,7 @@ This endpoint should add a restaurant to the database and respond with newly cre
 
 This endpoint should delete the specified restaurant from the database and respond with a 204 No Content status.
 
-**Hint:** You will likely come across an error that needs you to update the ratings table - add an ON DELETE action to the creation of the ratings table in [02-create-tables.sql](./db/02-create-tables.sql).
+**Hint:** You will likely come across an error that needs you to update the ratings table - add an `ON DELETE` action to the creation of the ratings table in your `.sql` files.
 
 ### 5. PATCH /api/restaurants/:restaurant_id
 
