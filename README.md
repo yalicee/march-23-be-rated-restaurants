@@ -47,7 +47,7 @@ A rating does not need to know which Area the Restaurant it `belongs to` is in.
 
 ## Creating the connection to the separate `test` and `development` databases
 
-Your first task is to create your connection to the database using `node-postgres`.
+**Database connection setup:** Your first task is to create your connection to the database using `node-postgres`.
 
 You will need to create a connection to the relevant database in a `./db/index.js` file, and use `dotenv` files (`.env.test` & `.env.development`) to determine which database to connect to, based on whether you are running your `jest` tests, or running the server manually.
 
@@ -56,6 +56,8 @@ You will need to create a connection to the relevant database in a `./db/index.j
 ## API challenges
 
 Now that we have our connection to our databases containing our data, we can start to build our server to interact with our data.
+
+**Test setup:** The next thing to do is to update the `"test"` script in the `package.json` file, so that it will seed the data and then run the tests using `jest`. [This Stack Overflow answer will be helpful!](https://stackoverflow.com/questions/4510640/what-is-the-purpose-of-in-a-shell-command)
 
 For each of the following endpoints, first write a test using `supertest` and then implement the endpoint.
 
