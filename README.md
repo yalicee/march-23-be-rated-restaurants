@@ -168,7 +168,7 @@ Update the existing endpoint so that each restaurant object has an `average_rati
 
 ## Even More Challenges
 
-### 8. GET /api/restaurants?search=<searchTerm>
+### 8. GET /api/restaurants?search=**searchTerm**
 
 Update the above endpoint to allow a `search` query which will filter the results for any restaurant names that match, or partially match, the search term.
 
@@ -211,7 +211,7 @@ Update this endpoint so that multiple valid keys could be provided and all of th
 }
 ```
 
-### 10. GET /api/restaurants?sort_by=<sortByCriteria>
+### 10. GET /api/restaurants?sort_by=**sortByCriteria**
 
 This endpoint should be able to take a sort_by query that will sort the restaurants by the specified criteria, including rating. If no sort_by is specified, the sort should default to sorted alphabetically by name, descending.
 
