@@ -61,7 +61,8 @@ Now that we have our connection to our databases containing our data, we can sta
 
 For each of the following endpoints, first write a test using `supertest` and then implement the endpoint.
 
-**After your lecture on Day 2, make sure to go back to previous endpoints and add any error handling you can think of - testing first and then implementing.**
+**Make sure to start with the happy path, testing under the assumption that the client request is correctly formed and all goes well!**
+**Then consider the sad path, thinking about how your server should respond if client requests are in some form incorrect**
 
 ### 1. GET /api
 
