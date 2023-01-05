@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed-dev": "psql -f ./db/seed-dev.sql"
+    "setup-dbs": "psql -f ./db/seed.sql > ./output.txt",
+    "seed": "PGDATABASE=rated_restaurant && node ./db/seed.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/northcoders/be-rated-restaurants/issues"
   },
-  "homepage": "https://github.com/northcoders/be-rated-restaurants#readme"
+  "homepage": "https://github.com/northcoders/be-rated-restaurants#readme",
+  "dependencies": {
+    "pg": "8.2.x"
+  }
 }
