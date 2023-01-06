@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup-dbs": "psql -f ./db/seed.sql > ./output.txt",
-    "seed": "PGDATABASE=rated_restaurant && node ./db/seed.js"
+    "setup-dbs": "psql -f ./db/seed.sql",
+    "run-seed": "PGDATABASE=rated_restaurant && node ./db/run-seed.js"
   },
   "repository": {
     "type": "git",
