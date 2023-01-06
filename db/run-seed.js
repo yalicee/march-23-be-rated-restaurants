@@ -1,6 +1,10 @@
 const { seed } = require("./seed")
 const testData = require("./data/index")
+const { db } = require("./connection")
 
-console.log(process.env)
+const runSeed = async () => {
+  await seed(testData)
+  db.end()
+}
 
-seed(testData)
+runSeed()
