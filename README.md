@@ -13,7 +13,8 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 
 ## Seeding
 
-There is a file in the `db` folder for seeding both a dev and a test database. You can run these directly with `psql` and for the dev database we have provided the following script in your package.json: `npm run seed-dev`
+You will need to create the database you can use the `setup-db` command.
+Then to seed the database, there is a file in the `db` folder for the database. You can run this file with the `seed-db` script.
 
 ### Tables
 
@@ -48,12 +49,7 @@ A rating does not need to know which Area the Restaurant it `belongs to` is in.
 ## Creating the connection to the separate `test` and `development` databases
 
 **Database connection setup:** Your first task is to create your connection to the database using `node-postgres`.
-
-You will need to create a connection to the relevant database in a `./db/index.js` file, and use `dotenv` files (`.env.test` & `.env.development`) to determine which database to connect to, based on whether you are running your `jest` tests, or running the server manually.
-
-> _`dotenv` is a [module that loads environment variables from a `.env` file into the `process.env` global object](https://github.com/motdotla/dotenv#readme)_
-
-## API challenges
+4## API challenges
 
 Now that we have our connection to our databases containing our data, we can start to build our server to interact with our data.
 
