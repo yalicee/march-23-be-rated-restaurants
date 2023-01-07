@@ -13,7 +13,8 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 
 ## Seeding
 
-There is a file in the `db` folder for seeding both a dev and a test database. You can run these directly with `psql` and for the dev database we have provided the following script in your package.json: `npm run seed-dev`
+You will need to create the database you can use the `setup-db` command.
+Then to seed the database, there is a file in the `db` folder for the database. You can run this file with the `seed-db` script.
 
 ### Tables
 
