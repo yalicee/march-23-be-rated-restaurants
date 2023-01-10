@@ -52,6 +52,8 @@ Now that we have our connection to our databases containing our data, we can sta
 
 **Test setup:** The next thing to do is to update the `"test"` script in the `package.json` file, so that it will seed the data and then run the tests using `jest`. [This Stack Overflow answer will be helpful!](https://stackoverflow.com/questions/4510640/what-is-the-purpose-of-in-a-shell-command)
 
+You will also need to setup the environment variable so your script should be `PGDATABASE=rated_restaurants jest`
+
 For each of the following endpoints, first write a test using `supertest` and then implement the endpoint.
 
 **Make sure to start with the happy path, testing under the assumption that the client request is correctly formed and all goes well!**
