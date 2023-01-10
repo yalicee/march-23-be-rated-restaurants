@@ -49,7 +49,8 @@ A rating does not need to know which Area the Restaurant it `belongs to` is in.
 ## Creating the connection to the separate `test` and `development` databases
 
 **Database connection setup:** Your first task is to create your connection to the database using `node-postgres`.
-4## API challenges
+
+## API challenges
 
 Now that we have our connection to our databases containing our data, we can start to build our server to interact with our data.
 
