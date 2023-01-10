@@ -14,7 +14,7 @@ When we are looking for in depth knowledge on JavaScript we tend to use MDN - W3
 ## Seeding
 
 You will need to create the database you can use the `setup-db` command.
-Then to seed the database, there is a file in the `db` folder for the database. You can run this file with the `seed-db` script.
+Then to seed the database, there is a file in the `db` folder for the database. You can run this file with the `run-seed` script.
 
 ### Tables
 
