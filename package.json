@@ -6,7 +6,8 @@
   "scripts": {
     "test": "PGDATABASE=rated_restaurants jest",
     "setup-db": "psql -f ./db/setup-db.sql",
-    "run-seed": "PGDATABASE=rated_restaurants node ./db/run-seed.js"
+    "run-seed": "PGDATABASE=rated_restaurants node ./db/run-seed.js",
+    "dev": "PGDATABASE=rated_restaurants nodemon listen.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "pg-format": "^1.0.4"
+    "nodemon": "^2.0.22",
+    "pg-format": "^1.0.4",
+    "supertest": "^6.3.3"
   }
 }
